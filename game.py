@@ -1,8 +1,10 @@
+
+#%%
 from random import randint
 from math import floor
 
-first_name = input('ゲーム1先攻プレイヤーの名前を入力してください：')
-second_name = input('ゲーム1後攻プレイヤーの名前を入力してください：')
+first_name = input('マッチ準備 ゲーム1先攻プレイヤーの名前を入力してください：')
+second_name = input('マッチ準備 ゲーム1後攻プレイヤーの名前を入力してください：')
 first_score = 0
 second_score = 0
 game = 1
@@ -31,6 +33,8 @@ while game <= 6 and first_score < 21 and second_score < 21:
                             break 
     first_act = first % 10
     second_act = second % 10
+    first_command_input = 0
+    second_command_input = 0
     first_command = 1
     second_command = 1
     turn = 1
@@ -40,38 +44,46 @@ while game <= 6 and first_score < 21 and second_score < 21:
         while turn <= 50 and first_act != 0 and second_act != 0:
             if first_command == 0:
                 second_command = 1
-                print(f'ターン{turn} {second_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {second_name}は自動的に突き')
                 first = (first + second_act * second_command) % 100
                 first_act = first % 10
-                print(f'ターン{turn} {first_name}：{first} {second_name}：{second}')
+                print(f'ターン{turn} 結果 {first_name}：{first} {second_name}：{second}')
                 turn += 1
                 first_command = 1
-                print(f'ターン{turn} {first_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {first_name}は自動的に突き')
                 second = (second + first_act * first_command) % 100
                 second_act = second % 10
                 print(f'ターン{turn} {first_name}：{first} {second_name}：{second}')
             elif second_command == 0:
                 first_command = 1
-                print(f'ターン{turn} {first_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {first_name}は自動的に突き')
                 second = (second + first_act * first_command) % 100
                 second_act = second % 10 
-                print(f'ターン{turn} {first_name}：{first} {second_name}：{second}')
+                print(f'ターン{turn} 結果 {first_name}：{first} {second_name}：{second}')
                 turn += 1
                 second_command = 1
-                print(f'ターン{turn} {second_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {second_name}は自動的に突き')
                 first = (first + second_act * second_command) % 100
                 first_act = first % 10
-                print(f'ターン{turn} {first_name}：{first} {second_name}：{second}')
+                print(f'ターン{turn} 結果 {first_name}：{first} {second_name}：{second}')
             else:    
                 if turn % 2 == 1:
-                    first_command = int(input(f'ターン{turn} {first_name}のターンです（突き＝１、引き＝０）：'))
+                    while True:
+                        first_command_input = input(f'ターン{turn} 行動 {first_name}のターンです（突き＝１、引き＝０）：')
+                        if first_command_input == '0' or first_command_input == '1':
+                            first_command = int(first_command_input)
+                            break
                     second = (second + first_act * first_command) % 100
                     second_act = second % 10
                 else:
-                    second_command = int(input(f'ターン{turn} {second_name}のターンです（突き＝１、引き＝０）：'))
+                    while True:
+                        second_command_input = input(f'ターン{turn} 行動 {second_name}のターンです（突き＝１、引き＝０）：')
+                        if second_command_input == '0' or second_command_input == '1':
+                            second_command = int(second_command_input)
+                            break
                     first = (first + second_act * second_command) % 100
                     first_act = first % 10
-                print(f'ターン{turn} {first_name}：{first} {second_name}：{second}')
+                print(f'ターン{turn} 結果 {first_name}：{first} {second_name}：{second}')
             turn += 1
 
     else:
@@ -79,38 +91,46 @@ while game <= 6 and first_score < 21 and second_score < 21:
         while turn <= 50 and first_act != 0 and second_act != 0:
             if first_command == 0:
                 second_command = 1
-                print(f'ターン{turn} {second_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {second_name}は自動的に突き')
                 first = (first + second_act * second_command) % 100
                 first_act = first % 10
-                print(f'ターン{turn} {second_name}：{second} {first_name}：{first}')
+                print(f'ターン{turn} 結果 {second_name}：{second} {first_name}：{first}')
                 turn += 1
                 first_command = 1
-                print(f'ターン{turn} {first_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {first_name}は自動的に突き')
                 second = (second + first_act * first_command) % 100
                 second_act = second % 10
-                print(f'ターン{turn} {second_name}：{second} {first_name}：{first}')
+                print(f'ターン{turn} 結果 {second_name}：{second} {first_name}：{first}')
             elif second_command == 0:
                 first_command = 1
-                print(f'ターン{turn} {first_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {first_name}は自動的に突き')
                 second = (second + first_act * first_command) % 100
                 second_act = second % 10
-                print(f'ターン{turn} {second_name}：{second} {first_name}：{first}')
+                print(f'ターン{turn} 結果 {second_name}：{second} {first_name}：{first}')
                 turn += 1
                 second_command = 1
-                print(f'ターン{turn} {second_name}は自動的に突き')
+                print(f'ターン{turn} 自動 {second_name}は自動的に突き')
                 first = (first + second_act * second_command) % 100
                 first_act = first % 10
-                print(f'ターン{turn} {second_name}：{second} {first_name}：{first}')
+                print(f'ターン{turn} 結果 {second_name}：{second} {first_name}：{first}')
             else:    
-                if turn % 2 == 0:
-                    first_command = int(input(f'ターン{turn} {first_name}のターンです（突き＝１、引き＝０）：'))
+                if turn % 2 == 1:
+                    while True:
+                        first_command_input = input(f'ターン{turn} 行動 {first_name}のターンです（突き＝１、引き＝０）：')
+                        if first_command_input == '0' or first_command_input == '1':
+                            first_command = int(first_command_input)
+                            break
                     second = (second + first_act * first_command) % 100
                     second_act = second % 10
                 else:
-                    second_command = int(input(f'ターン{turn} {second_name}のターンです（突き＝１、引き＝０）：'))
+                    while True:
+                        second_command_input = input(f'ターン{turn} 行動 {second_name}のターンです（突き＝１、引き＝０）：')
+                        if second_command_input == '0' or second_command_input == '1':
+                            second_command = int(second_command_input)
+                            break
                     first = (first + second_act * second_command) % 100
                     first_act = first % 10
-                print(f'ターン{turn} {second_name}：{second} {first_name}：{first}')
+                print(f'ターン{turn} 結果 {second_name}：{second} {first_name}：{first}')
             turn += 1   
     if second_act == 0:
         first_score += floor(first/10) + 1

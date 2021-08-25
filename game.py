@@ -53,7 +53,7 @@ while game <= 6 and first_score < 21 and second_score < 21:
                 print(f'ターン{turn} 自動 {first_name}は自動的に突き')
                 second = (second + first_act * first_command) % 100
                 second_act = second % 10
-                print(f'ターン{turn} {first_name}：{first} {second_name}：{second}')
+                print(f'ターン{turn} 結果 {first_name}：{first} {second_name}：{second}')
             elif second_command == 0:
                 first_command = 1
                 print(f'ターン{turn} 自動 {first_name}は自動的に突き')

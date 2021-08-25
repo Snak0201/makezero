@@ -7,7 +7,7 @@ first_score = 0
 second_score = 0
 game = 1
 
-while game <= 6 and first_score < 25 and second_score < 25:
+while game <= 6 and first_score < 21 and second_score < 21:
     while True:
         first = randint(1,99)
         second = randint(1,99)
@@ -135,7 +135,7 @@ if game > 6:
         print(f'このマッチは{second_name}の勝ちです　{first_name} {first_score}-{second_score} {second_name}')
     elif first_score == second_score:
         print(f'このマッチは引き分けです　{first_name} {first_score}-{second_score} {second_name}')
-elif first_score >= 25:
-    print(f'このマッチは{first_name}の勝ちです　{first_name} 25-{second_score} {second_name}')
-elif second_score >= 25:
-    print(f'このマッチは{second_name}の勝ちです　{first_name} {first_score}-25 {second_name}')
+elif first_score >= 21:
+    print(f'このマッチは{first_name}の勝ちです　{first_name} 21-{second_score} {second_name}')
+elif second_score >= 21:
+    print(f'このマッチは{second_name}の勝ちです　{first_name} {first_score}-21 {second_name}')
